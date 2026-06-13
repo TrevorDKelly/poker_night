@@ -89,6 +89,14 @@
           <span class="stat-label">Total KOs</span>
           <span class="stat-value">{{ stats.totalKOs }}</span>
         </div>
+        <div class="stat-card">
+          <span class="stat-label">Quad Pot</span>
+          <span class="stat-value">${{ quadPotValue }}</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Top Quad Pot</span>
+          <span class="stat-value">{{ stats.biggestQuadPotWin.name }} (${{ stats.biggestQuadPotWin.amount }})</span>
+        </div>
       </div>
     </div>
   </div>
@@ -99,7 +107,9 @@ import { computed } from 'vue'
 import { TRANSACTIONS, CURRENCY } from '../../config/leaderboard.js'
 import { HOUSE_RULES } from '../../config/houseRules.js'
 import NetChart from './NetChart.vue'
+import { useQuadPot } from '../../logic/useQuadPot.js'
 
+const { quadPotValue } = useQuadPot()
 const rankedPlayers = computed(() => {
   const totals = {}
   for (const t of TRANSACTIONS) {
@@ -160,6 +170,7 @@ const stats = computed(() => {
   const pokerNights = new Set(TRANSACTIONS.filter(t => t.amount > 0).map(t => t.date)).size
   const totalPlayers = players.length
   const totalKOs = elimRules.length
+  const biggestQuadPotWinTx = TRANSACTIONS.filter(t => t.quad).sort((a, b) => b.amount - a.amount)[0];
 
   return {
     top3KD,
@@ -169,6 +180,7 @@ const stats = computed(() => {
     mostBustedCount: mostBustedEntry ? mostBustedEntry[1] : 0,
     biggestWinner: biggestWinner?.name ?? '—',
     biggestWin: biggestWinner?.net > 0 ? biggestWinner.net.toFixed(2) : '0.00',
+    biggestQuadPotWin: biggestQuadPotWinTx ? { name: biggestQuadPotWinTx.name, amount: biggestQuadPotWinTx.amount.toFixed(2) } : { name: '—', amount: '0.00' },
     totalPot: totalPot.toFixed(2),
     pokerNights,
     totalPlayers,

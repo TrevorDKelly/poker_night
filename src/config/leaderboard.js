@@ -13,11 +13,13 @@ export const TRANSACTIONS = [
   { name: 'Darnell', type: 'buyin',  amount: 20.00, date: '2026-05-22' },
   { name: 'Cole',    type: 'buyin',  amount: 20.00, date: '2026-05-22' },
   { name: 'Mark',    type: 'buyin',  amount: 20.00, date: '2026-05-22' },
-  { name: 'Trevor',  type: 'payout', amount: 25.85, date: '2026-05-22' },
+  { name: 'Trevor',  type: 'payout', amount: 25.90, date: '2026-05-22' },
+  { name: 'Trevor',  type: 'payout', amount: 5.60,  date: '2026-05-22', quad: true },
   { name: 'Eric',    type: 'payout', amount: 3.00,  date: '2026-05-22' },
-  { name: 'Darnell', type: 'payout', amount: 21.75, date: '2026-05-22' },
+  { name: 'Darnell', type: 'payout', amount: 21.70, date: '2026-05-22' },
   { name: 'Cole',    type: 'payout', amount: 32.20, date: '2026-05-22' },
   { name: 'Mark',    type: 'payout', amount: 16.60, date: '2026-05-22' },
+
   // 2026-05-22 transactions
   // { name: 'Trevor',  type: 'buyin',  amount: 20.00, date: '2026-05-23' },
   // { name: 'Eric',    type: 'buyin',  amount: 20.00, date: '2026-05-23' },

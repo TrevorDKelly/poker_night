@@ -17,7 +17,7 @@
       </div>
       <div class="info-item">
         <span class="info-label">♦️ Hit 4 of a Kind:</span>
-        <span class="info-value">Win the quad pot (💰 <span class="highlight">${{ quadPotValue.toFixed(2) }}</span>)</span>
+        <span class="info-value">Win the quad pot (💰 <span class="highlight">${{ quadPotValue }}</span>)</span>
       </div>
     </div>
 
@@ -42,16 +42,10 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { HOUSE_RULES, QUAD_POT } from '../../config/houseRules.js'
-import { TRANSACTIONS } from '../../config/leaderboard.js'
+import { HOUSE_RULES } from '../../config/houseRules.js'
+import { useQuadPot } from '../../logic/useQuadPot.js'
 
-// Quad pot = total buy-ins minus total payouts (money left on the table)
-const quadPotValue = computed(() => {
-  const totalIn = TRANSACTIONS.filter(t => t.type === 'buyin').reduce((s, t) => s + t.amount, 0)
-  const totalOut = TRANSACTIONS.filter(t => t.type === 'payout').reduce((s, t) => s + t.amount, 0)
-  return Math.max(0, totalIn - totalOut)
-})
+const { quadPotValue } = useQuadPot()
 </script>
 
 <style scoped>
