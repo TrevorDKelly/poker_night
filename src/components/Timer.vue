@@ -107,6 +107,8 @@ onUnmounted(() => {
 <style scoped>
 .timer-controls {
   display: flex;
+  flex: 1;
+  justify-content: center;
   align-items: center;
   gap: 1rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;

@@ -222,7 +222,7 @@ const stats = computed(() => {
   background: rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: 8px;
-  padding: 0.4rem 0.6rem;
+  padding: 0.5rem 0.6rem;
   display: flex;
   justify-content: space-between;
   align-items: center;

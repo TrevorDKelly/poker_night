@@ -52,7 +52,7 @@ defineEmits(['restart', 'timer-state-change'])
 <style scoped>
 footer {
   width: 100%;
-  height: 80px;
+  height: 50px;
   padding: 0 2rem;
   background: var(--bgFooter);
   backdrop-filter: blur(10px);
@@ -69,6 +69,7 @@ footer {
   font-size: 0.85rem;
   color: var(--textMuted);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  flex: 1;
 }
 
 .keys {
@@ -82,6 +83,8 @@ footer {
 
 .status-indicator {
   display: flex;
+  flex: 1;
+  justify-content: right;
   align-items: center;
   gap: 1rem;
   font-size: 1rem;

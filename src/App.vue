@@ -182,7 +182,7 @@ main {
   background-image:
     radial-gradient(ellipse at center, #163a18 0%, #0d1f0f 70%);
   color: var(--textPrimary);
-  font-family: var(--fontFamily);
+  font-family: var(--sans);
   overflow: hidden;
   position: relative;
   transition: background-color 0.8s, background-image 0.8s;
