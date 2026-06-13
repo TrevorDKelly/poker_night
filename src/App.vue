@@ -195,9 +195,8 @@ main.timer-expired {
 
 /* Flipper container is a viewport that masks the overflow columns. */
 .flipper-container-wrapper {
-  flex-grow: 1;
-  width: 90%;
-  max-width: 1200px;
+  flex-grow: 0.6;
+  width: 97%;
   height: 80vh;
   margin: auto;
   overflow: hidden;

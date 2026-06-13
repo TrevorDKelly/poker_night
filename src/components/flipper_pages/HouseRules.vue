@@ -71,11 +71,14 @@ const { quadPotValue } = useQuadPot()
   color: var(--textPrimary, #f0e6c8);
   font-weight: 600;
   white-space: nowrap;
+  flex:1;
+  text-align: right;
 }
 
 .info-value {
   color: var(--textMuted, #7a9e7e);
   text-align: left;
+  flex: 1;
 }
 
 .highlight {
@@ -98,7 +101,7 @@ const { quadPotValue } = useQuadPot()
 }
 
 .rule-row {
-  padding: 0.6rem 0.75rem;
+  padding: 0.2rem 0.75rem;
   display: flex;
   gap: 0.5rem;
   align-items: flex-start;
