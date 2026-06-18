@@ -107,58 +107,53 @@ onUnmounted(() => {
 <style scoped>
 .timer-controls {
   display: flex;
-  flex: 1;
-  justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
+  font-size: 0.85rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 .timer-countdown {
-  font-size: 1.1rem;
   font-weight: bold;
   color: var(--highlight);
-  background-color: var(--bgKey);
-  border: 1px solid var(--borderSubtle);
-  padding: 0.25rem 0.6rem;
-  border-radius: 4px;
-}
-
-.pulse-warning {
-  animation: pulseWarningAnim 1s infinite alternate;
-  border-color: #ff4a4a;
-  color: #ff4a4a;
-}
-
-@keyframes pulseWarningAnim {
-  0% {
-    box-shadow: 0 0 4px #ff4a4a;
-  }
-  100% {
-    box-shadow: 0 0 15px #ff4a4a;
-  }
+  min-width: 45px;
+  text-align: right;
+  font-size: 0.85rem;
 }
 
 .timer-btn {
-  background-color: var(--highlight);
-  color: #0d1f0f;
-  border: none;
-  padding: 0.4rem 0.9rem;
+  background-color: transparent;
+  border: 1px solid var(--borderSubtle);
+  color: var(--textMuted);
+  padding: 0.2rem 0.5rem;
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  transition: opacity 0.2s, background-color 0.2s, color 0.2s;
+  transition: all 0.2s;
 }
 
-.timer-btn:hover {
-  opacity: 0.85;
+.timer-btn:hover:not(:disabled) {
+  background-color: var(--bgKey);
+  color: var(--highlight);
+  border-color: var(--highlight);
 }
 
 .timer-btn-expired {
-  background-color: #ff4a4a;
-  color: #ffffff;
+  background-color: var(--warning);
+  color: #0d1f0f;
+  border-color: var(--warning);
+}
+
+.pulse-warning {
+  color: var(--warning);
+  animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+  from { opacity: 1; text-shadow: 0 0 5px var(--warning); }
+  to { opacity: 0.6; text-shadow: none; }
 }
 
 @media (max-width: 900px) {

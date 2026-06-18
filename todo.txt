@@ -23,8 +23,40 @@ additional
   availability calendar
   spotify box
   mini game spin wheel?
-    ce lo
-    left right center
-    rock paper scissors
-    spanish american war
-    card flip till someone gets A of spades
+    cee-lo
+    blackjack vs the quad pot
+    bomb pot
+    war
+      lowest kicked out
+      low ties, both out
+    acey ducey
+      in between or outside
+    poker dice
+      cee-lo with poker dice
+    the debt of lies
+      everyone gets one card
+      go around saying what your card is.
+      lowest is out
+        except, they can call out one liar
+        if they are right. that person is out, they are back in
+      if you lie and still finnish last, 50 to quad pot
+    harvest of souls
+      everyone gets two dice
+      roll, any pairs and highest total can take 1 die from left or right
+      roll again
+      if you run out of dice you loose
+      when down to two, one highest roll wins
+
+    maybes
+      card flip till someone gets A of spades
+      left right center
+      rock paper scissors
+      spanish american war
+      cheater deck hand
+      flip 7
+      call red or black, most correct wins
+      2-3
+        everyone blinds
+        everyone gets one card,
+        one round of betting. high card wins
+        a 2 or 3 wins if high card is an ace

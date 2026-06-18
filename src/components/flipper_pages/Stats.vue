@@ -90,7 +90,7 @@
           <span class="stat-value">{{ stats.totalKOs }}</span>
         </div>
         <div class="stat-card">
-          <span class="stat-label">Quad Pot</span>
+          <span class="stat-label">Current Quad Pot</span>
           <span class="stat-value">${{ quadPotValue }}</span>
         </div>
         <div class="stat-card">
