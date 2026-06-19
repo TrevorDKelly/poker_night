@@ -1,51 +1,46 @@
 <template>
   <div class="flipper-panel">
-    <div class="panel-header">
-      <h2 class="panel-title">🪙 Chip Values</h2>
-    </div>
-    <div class="chips-container">
-      <div v-for="chip in chips" :key="chip.color" class="chip-row">
-        <div class="chip-col col-img">
-          <img :src="chip.image" :alt="chip.color" class="chip-img" />
-        </div>
-        <div class="chip-col col-color">
-          <span class="capitalize color-name">{{ chip.color }}</span>
-        </div>
-        <div class="chip-col col-value">
-          <span class="chip-val">{{ chip.value }}</span>
+    <div class="chip-values-section">
+      <div class="panel-header">
+        <h2 class="panel-title">🪙 Chip Values</h2>
+      </div>
+      <div class="chips-container">
+        <div v-for="chip in chips" :key="chip.color" class="chip-row">
+          <div class="chip-col col-img">
+            <img :src="chip.image" :alt="chip.color" class="chip-img" />
+          </div>
+          <div class="chip-col col-color">
+            <span class="capitalize color-name">{{ chip.color }}</span>
+          </div>
+          <div class="chip-col col-value">
+            <span class="chip-val">{{ chip.value }}</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="blinds-card">
-      <div class="blinds-card-header">
-        <span class="card-icon">🃏</span>
-        <h3 class="card-title">Blinds</h3>
+    <div class="blinds-section">
+      <div class="panel-header">
+        <h2 class="panel-title">🪙 Blinds</h2>
       </div>
       <div class="blinds-display-row">
-        <div class="blind-slot-vertical">
-          <span class="blind-name-top">Small Blind</span>
-          <div class="blind-bottom">
-            <div class="chip-image-container">
-              <img :src="whiteChip" class="single-chip" alt="White Chip" />
-            </div>
-            <span class="blind-amt">10</span>
+        <div class="blind-slot">
+          <div class="chip-image-container">
+            <img :src="whiteChip" class="single-chip" alt="White Chip" />
           </div>
+          <span class="blind-amt">10</span>
         </div>
 
         <div class="blinds-sep">
           <span class="sep-line-full"></span>
         </div>
 
-        <div class="blind-slot-vertical">
-          <span class="blind-name-top">Big Blind</span>
-          <div class="blind-bottom">
-            <div class="chip-image-container double-stack">
-              <img :src="whiteChip" class="stack-chip chip-back" alt="White Chip" />
-              <img :src="whiteChip" class="stack-chip chip-front" alt="White Chip" />
-            </div>
-            <span class="blind-amt highlight">20</span>
+        <div class="blind-slot">
+          <div class="chip-image-container double-stack">
+            <img :src="whiteChip" class="stack-chip chip-back" alt="White Chip" />
+            <img :src="whiteChip" class="stack-chip chip-front" alt="White Chip" />
           </div>
+          <span class="blind-amt highlight">20</span>
         </div>
       </div>
     </div>
@@ -69,6 +64,25 @@ const chips = [
 </script>
 
 <style scoped>
+.flipper-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.chip-values-section {
+  flex: 0 0 75%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.blinds-section {
+  flex: 0 0 25%;
+  display: flex;
+  flex-direction: column;
+}
+
 .chips-container {
   display: flex;
   flex-direction: column;
@@ -154,34 +168,6 @@ const chips = [
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.blinds-card {
-  margin-top: 1rem;
-  background: rgba(0, 0, 0, 0.15);
-  border: 1px solid var(--borderSubtle, rgba(201, 168, 76, 0.15));
-  border-radius: 12px;
-  padding: clamp(0.6rem, 1.4vh, 0.9rem);
-}
-
-.blinds-card-header {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-bottom: 0.75rem;
-}
-
-.card-icon {
-  font-size: 1rem;
-}
-
-.card-title {
-  font-size: 0.85rem;
-  font-weight: bold;
-  color: var(--highlight, #c9a84c);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin: 0;
-}
-
 .blinds-display-row {
   display: flex;
   align-items: center;
@@ -192,43 +178,28 @@ const chips = [
   padding: clamp(0.35rem, 1.2vh, 0.75rem) 0.5rem;
 }
 
-.blind-slot-vertical {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.35rem;
-  flex: 1;
-}
-
-.blind-name-top {
-  font-size: clamp(0.6rem, 1.2vh, 0.75rem);
-  color: var(--textMuted, #7a9e7e);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-weight: bold;
-}
-
-.blind-bottom {
+.blind-slot {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
-  gap: 0.5rem;
+  justify-content: center;
+  gap: 2rem;
+  flex: 1;
 }
 
 .chip-image-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: clamp(24px, 4vh, 32px);
-  height: clamp(24px, 4vh, 32px);
+  width: clamp(30px, 9vh, 80px);
+  height: clamp(30px, 9vh, 80px);
   flex-shrink: 0;
 }
 
 .chip-image-container.double-stack {
   position: relative;
-  width: clamp(34px, 5.5vh, 46px);
-  height: clamp(34px, 5.5vh, 46px);
+  width: clamp(30px, 9vh, 80px);
+  height: clamp(30px, 9vh, 80px);
 }
 
 .single-chip,
@@ -244,7 +215,7 @@ const chips = [
 }
 
 .chip-back {
-  transform: translate(-3px, -3px) rotate(-15deg) scale(0.95);
+  transform: translate(-15px, -6px) rotate(-15deg) scale(0.95);
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.6)) brightness(0.85);
 }
 

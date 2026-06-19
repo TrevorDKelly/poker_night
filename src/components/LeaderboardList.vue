@@ -57,7 +57,7 @@ defineProps({
   min-height: 0;
 }
 .list-title {
-  font-size: 0.85rem;
+  font-size: clamp(0.75rem, 1.5vh, 3rem);
   font-weight: bold;
   color: var(--highlight, #c9a84c);
   text-transform: uppercase;
@@ -75,9 +75,11 @@ defineProps({
 }
 
 .board-row {
-  padding: 0.45rem 0.75rem;
-  font-size: 0.95rem;
+  padding: clamp(0.3rem, 1vh, 3rem) 0.75rem;
+  font-size: clamp(0.8rem, 1.6vh, 3rem);
   color: var(--textPrimary, #f0e6c8);
+  display: flex;
+  align-items: center;
 }
 
 .board-row:hover {
@@ -104,38 +106,34 @@ defineProps({
 }
 
 .col-rank {
-  width: 2rem;
-  flex-shrink: 0;
-  text-align: center;
-  font-size: 1rem;
+  width: 30px;
+  text-align: left;
+  font-size: clamp(0.8rem, 1.6vw, 1rem);
 }
 
 .rank-num {
-  font-size: 0.85rem;
-  color: var(--textMuted, #7a9e7e);
+  font-size: 0.75rem;
+  color: var(--textMuted);
 }
 
 .col-name {
   flex-grow: 1;
   font-weight: 500;
+  text-align: left;
 }
 
 .col-net {
-  min-width: 5rem;
-  text-align: right;
   font-weight: bold;
-  font-family: monospace;
-  font-size: 1rem;
 }
 
 .positive {
-  color: #5dca6e;
+  color: var(--positive, #4caf50);
 }
 
 .negative-label {
-  color: var(--textMuted, #7a9e7e);
+  font-size: 0.9em;
   font-style: italic;
+  opacity: 0.5;
   font-weight: normal;
-  font-size: 0.85rem;
 }
 </style>

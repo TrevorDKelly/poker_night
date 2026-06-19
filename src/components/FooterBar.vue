@@ -18,10 +18,10 @@
       <template v-else>
         <span class="paused-badge">Paused</span>
         <span v-if="autoResumeMsRemaining > 0" class="auto-resume-info">
-          (Auto-resuming in {{ autoResumeSecondsRemaining }}s)
+          ({{ autoResumeSecondsRemaining }}s)
         </span>
         <button @click.stop="$emit('restart')" class="resume-btn">
-          ▶ Restart Now
+          ▶
         </button>
       </template>
     </div>
@@ -94,6 +94,7 @@ footer {
   font-size: 0.75rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   transition: all 0.2s;
+  flex: 0.75;
 }
 
 .spinner-btn:hover {
@@ -106,7 +107,7 @@ footer {
   font-size: 0.65rem;
   color: var(--textMuted);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  flex: 1;
+  flex: 2;
 }
 
 .keys {
@@ -121,7 +122,7 @@ footer {
 .status-indicator {
   display: flex;
   flex: 1;
-  justify-content: right;
+  justify-content: left;
   align-items: center;
   gap: 0.5rem;
   font-size: 0.85rem;

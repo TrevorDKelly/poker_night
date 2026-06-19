@@ -111,6 +111,7 @@ onUnmounted(() => {
   gap: 0.5rem;
   font-size: 0.85rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  flex:1
 }
 
 .timer-countdown {

@@ -8,12 +8,7 @@
       <div v-for="hand in hands" :key="hand.name" class="hand-row panel-row">
         <!-- Rank -->
         <span class="rank panel-row-number">{{ hand.rank }}</span>
-
-        <!-- Name and Description -->
-        <div class="hand-meta">
-          <span class="hand-name">{{ hand.name }}</span>
-          <p class="description">{{ hand.description }}</p>
-        </div>
+        <span class="hand-name">{{ hand.name }}</span>
 
         <!-- Cards on the right -->
         <div class="hand-cards">
@@ -36,7 +31,6 @@ const hands = [
   {
     rank: 1,
     name: 'Royal Flush',
-    description: 'A, K, Q, J, 10 of the same suit.',
     cards: [
       { value: 'A', suit: '❤️' },
       { value: 'K', suit: '❤️' },
@@ -48,7 +42,6 @@ const hands = [
   {
     rank: 2,
     name: 'Straight Flush',
-    description: 'Five cards in sequence, all of the same suit.',
     cards: [
       { value: '9', suit: '♠️' },
       { value: '8', suit: '♠️' },
@@ -60,7 +53,6 @@ const hands = [
   {
     rank: 3,
     name: 'Four of a Kind',
-    description: 'Four cards of the same numerical rank.',
     cards: [
       { value: 'Q', suit: '♦️' },
       { value: 'Q', suit: '♣️' },
@@ -72,7 +64,6 @@ const hands = [
   {
     rank: 4,
     name: 'Full House',
-    description: 'Three of a kind combined with a pair.',
     cards: [
       { value: '10', suit: '❤️' },
       { value: '10', suit: '♣️' },
@@ -84,7 +75,6 @@ const hands = [
   {
     rank: 5,
     name: 'Flush',
-    description: 'Any five cards of the exact same suit, not in sequence.',
     cards: [
       { value: 'A', suit: '♦️' },
       { value: 'J', suit: '♦️' },
@@ -96,7 +86,6 @@ const hands = [
   {
     rank: 6,
     name: 'Straight',
-    description: 'Five numerical cards in sequence, of different suits.',
     cards: [
       { value: '8', suit: '❤️' },
       { value: '7', suit: '♣️' },
@@ -108,7 +97,6 @@ const hands = [
   {
     rank: 7,
     name: 'Three of a Kind',
-    description: 'Three cards of the same numerical rank.',
     cards: [
       { value: '7', suit: '❤️' },
       { value: '7', suit: '♣️' },
@@ -120,7 +108,6 @@ const hands = [
   {
     rank: 8,
     name: 'Two Pair',
-    description: 'Two different pairs of numerical cards.',
     cards: [
       { value: 'J', suit: '❤️' },
       { value: 'J', suit: '♣️' },
@@ -132,7 +119,6 @@ const hands = [
   {
     rank: 9,
     name: 'One Pair',
-    description: 'Two cards of matching numerical rank.',
     cards: [
       { value: 'A', suit: '❤️' },
       { value: 'A', suit: '♣️' },
@@ -144,7 +130,6 @@ const hands = [
   {
     rank: 10,
     name: 'High Card',
-    description: 'Highest card plays when no other hand is made.',
     cards: [
       { value: 'A', suit: '❤️' },
       { value: 'Q', suit: '♣️', filler: true },
@@ -204,43 +189,34 @@ const hands = [
 }
 
 .rank {
-  font-size: 0.7rem;
-  width: 16px;
-  height: 16px;
+  font-size: clamp(0.6rem, 1vh, 3rem);
+  width: 2.25vh;
+  height: 2.25vh;
 }
 
 .hand-name {
-  font-size: 0.85rem;
+  flex: 1;
+  text-align: left;
+  font-size: clamp(0.75rem, 2.5vh, 5rem);
   font-weight: bold;
   color: var(--highlight, #c9a84c);
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.description {
-  margin: 0;
-  font-size: 0.68rem;
-  color: var(--textPrimary, #f0e6c8);
-  opacity: 0.75;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  line-height: 1.1;
 }
 
 .hand-cards {
   display: flex;
-  gap: 0.12rem;
+  justify-content: flex-end;
+  gap: clamp(0.1rem, 0.5vw, 2rem);
   flex-shrink: 0;
+  flex:1
 }
 
 .card {
   background: #ffffff;
   color: #000000;
   border-radius: 2px;
-  width: 36px;
-  height: 32px;
+  width: clamp(30px, 8vw, 36px);
+  height: clamp(30px, 8vw, 32px);
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -252,13 +228,13 @@ const hands = [
 }
 
 .card-val {
-  font-size: 0.7rem;
+  font-size: clamp(0.65rem, 1.4vw, 0.7rem);
   font-weight: 900;
   line-height: 1;
 }
 
 .card .suit {
-  font-size: 0.6rem;
+  font-size: clamp(0.55rem, 1.2vw, 0.6rem);
   line-height: 1;
 }
 
@@ -271,13 +247,9 @@ const hands = [
   filter: grayscale(0.5);
 }
 
-@media (max-height: 800px) {
-  .card {
-    width: 30px;
-    height: 30px;
+@media (max-width: 768px) {
+  .hand-row {
+    padding: 0.2rem 0.4rem;
   }
-  .card-val { font-size: 0.65rem; }
-  .card .suit { font-size: 0.55rem; }
-  .description { font-size: 0.6rem; }
 }
 </style>

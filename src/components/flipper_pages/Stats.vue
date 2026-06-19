@@ -15,20 +15,20 @@
       </div>
       <div class="stats-grid panel-scrollable">
         <!-- Stat Cards -->
-        <div class="stat-card">
-          <span class="stat-label">Most KOs</span>
-          <span class="stat-value highlight">{{ stats.mostKOs.name }} ({{ stats.mostKOs.count }})</span>
+        <div class="card stat-card">
+          <span class="card-title">Most KOs</span>
+          <span class="card-value highlight">{{ stats.mostKOs.name }} ({{ stats.mostKOs.count }})</span>
         </div>
-        <div class="stat-card">
-          <span class="stat-label">Most Busted</span>
-          <span class="stat-value">{{ stats.mostBustedName }} ({{ stats.mostBustedCount }})</span>
+        <div class="card stat-card">
+          <span class="card-title">Most Busted</span>
+          <span class="card-value">{{ stats.mostBustedName }} ({{ stats.mostBustedCount }})</span>
         </div>
 
         <!-- List Cards -->
         <!-- K/D -->
-        <div class="list-card">
-          <div class="list-title">Top 3 K/D Ratio</div>
-          <div class="list-items">
+        <div class="card list-card">
+          <div class="card-title">Top 3 K/D Ratio</div>
+          <div class="card-value list-items">
             <div v-if="stats.top3KD[0]" class="list-item rank-1">
               {{ stats.top3KD[0].name }} ({{ stats.top3KD[0].k }}:{{ stats.top3KD[0].d }})
             </div>
@@ -45,9 +45,9 @@
         </div>
 
         <!-- Rivalries -->
-        <div class="list-card">
-          <div class="list-title">Biggest Rivals</div>
-          <div class="list-items">
+        <div class="card list-card">
+          <div class="card-title">Biggest Rivals</div>
+          <div class="card-value list-items">
             <div v-if="stats.topRivalries[0]" class="list-item rank-1 rivalry">
               <span class="rival-name">{{ stats.topRivalries[0].a }}</span>
               <span class="rivalry-vs">vs</span>
@@ -73,29 +73,29 @@
         </div>
 
 
-        <div class="stat-card">
-          <span class="stat-label">All Time {{ CURRENCY }} on Table</span>
-          <span class="stat-value">${{ stats.totalPot }}</span>
+        <div class="card stat-card">
+          <span class="card-title">All Time {{ CURRENCY }} on Table</span>
+          <span class="card-value">${{ stats.totalPot }}</span>
         </div>
-        <div class="stat-card">
-          <span class="stat-label">Poker Nights</span>
-          <span class="stat-value">{{ stats.pokerNights }}</span>
+        <div class="card stat-card">
+          <span class="card-title">Poker Nights</span>
+          <span class="card-value">{{ stats.pokerNights }}</span>
         </div>
-        <div class="stat-card">
-          <span class="stat-label">Total Players</span>
-          <span class="stat-value">{{ stats.totalPlayers }}</span>
+        <div class="card stat-card">
+          <span class="card-title">Total Players</span>
+          <span class="card-value">{{ stats.totalPlayers }}</span>
         </div>
-        <div class="stat-card">
-          <span class="stat-label">Total KOs</span>
-          <span class="stat-value">{{ stats.totalKOs }}</span>
+        <div class="card stat-card">
+          <span class="card-title">Total KOs</span>
+          <span class="card-value">{{ stats.totalKOs }}</span>
         </div>
-        <div class="stat-card">
-          <span class="stat-label">Current Quad Pot</span>
-          <span class="stat-value">${{ quadPotValue }}</span>
+        <div class="card stat-card">
+          <span class="card-title">Current Quad Pot</span>
+          <span class="card-value">${{ quadPotValue }}</span>
         </div>
-        <div class="stat-card">
-          <span class="stat-label">Top Quad Pot</span>
-          <span class="stat-value">{{ stats.biggestQuadPotWin.name }} (${{ stats.biggestQuadPotWin.amount }})</span>
+        <div class="card stat-card">
+          <span class="card-title">Top Quad Pot</span>
+          <span class="card-value">{{ stats.biggestQuadPotWin.name }} (${{ stats.biggestQuadPotWin.amount }})</span>
         </div>
       </div>
     </div>
@@ -106,7 +106,7 @@
 import { computed } from 'vue'
 import { TRANSACTIONS, CURRENCY } from '../../config/leaderboard.js'
 import { HOUSE_RULES } from '../../config/houseRules.js'
-import NetChart from './NetChart.vue'
+import NetChart from '../NetChart.vue'
 import { useQuadPot } from '../../logic/useQuadPot.js'
 
 const { quadPotValue } = useQuadPot()
@@ -212,34 +212,40 @@ const stats = computed(() => {
 .stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
+  gap: clamp(0.3rem, 1vw, 0.5rem);
   flex-grow: 1;
   align-content: start;
   overflow-y: auto;
 }
 
-.stat-card {
+.card {
   background: rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: 8px;
-  padding: 0.5rem 0.6rem;
+  padding: clamp(0.3rem, 1vh, 1.5rem) clamp(0.4rem, 1vw, 1.5rem);
   display: flex;
+}
+.list-card {
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.stat-card {
   justify-content: space-between;
   align-items: center;
-  gap: 0.5rem;
   grid-column: span 1;
 }
 
-.stat-label {
-  font-size: 0.65rem;
+.xxx {
+  font-size: clamp(0.55rem, 1.5vh, 3rem);
   color: var(--textMuted, #7a9e7e);
   text-transform: uppercase;
   letter-spacing: 0.4px;
   white-space: nowrap;
 }
 
-.stat-value {
-  font-size: 0.9rem;
+.card-value {
+  font-size: clamp(0.75rem, 1.75vh, 3rem);
   font-weight: bold;
   color: var(--textPrimary, #f0e6c8);
   font-family: monospace;
@@ -248,22 +254,12 @@ const stats = computed(() => {
   text-overflow: ellipsis;
 }
 
-.stat-value.highlight {
+.card-value.highlight {
   color: var(--highlight, #c9a84c);
 }
 
-.list-card {
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  border-radius: 8px;
-  padding: 0.45rem 0.6rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-.list-title {
-  font-size: 0.65rem;
+.card-title {
+  font-size: clamp(0.55rem, 1.25vh, 3rem);
   color: var(--textMuted, #7a9e7e);
   text-transform: uppercase;
   letter-spacing: 0.4px;
@@ -275,8 +271,6 @@ const stats = computed(() => {
   display: flex;
   flex-direction: column;
   gap: 0.1rem;
-  font-family: monospace;
-  font-weight: bold;
 }
 
 .list-item {
@@ -285,17 +279,16 @@ const stats = computed(() => {
 }
 
 .list-item.rank-1 {
-  font-size: 1rem;
   color: var(--highlight, #c9a84c);
 }
 
 .list-item.rank-2 {
-  font-size: 0.85rem;
+  font-size: 0.8em;
   opacity: 0.8;
 }
 
 .list-item.rank-3 {
-  font-size: 0.75rem;
+  font-size: 0.75em;
   opacity: 0.6;
 }
 
@@ -317,7 +310,7 @@ const stats = computed(() => {
 }
 
 .list-item-placeholder {
-  font-size: 0.8rem;
+  font-size: clamp(0.7rem, 1.4vw, 0.8rem);
   color: var(--textMuted, #7a9e7e);
   opacity: 0.6;
   text-align: center;

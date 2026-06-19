@@ -83,7 +83,7 @@
 
 <script setup>
 import { computed } from 'vue'
-import { GRAPH_TIMEPOINT_COUNT } from '../../config/constants'
+import { GRAPH_TIMEPOINT_COUNT } from '../config/constants'
 
 const props = defineProps({
   transactions: {
@@ -285,17 +285,17 @@ const formatDate = (dateStr) => {
   display: flex;
   flex-direction: column;
   justify-content: start;
-  gap: 0.15rem; /* Reduced gap */
-  padding-right: 0.25rem; /* Reduced padding */
+  gap: 0.15rem;
+  padding-right: 0.25rem;
   min-width: 40px;
-  max-width: 60px; /* Added max-width */
+  max-width: 100px;
 }
 
 .legend-item {
   display: flex;
   align-items: center;
   gap: 0.25rem; /* Reduced gap */
-  font-size: 0.65rem; /* Reduced font size */
+  font-size: clamp(0.3rem, 1.5vh, 3rem);
   color: var(--textPrimary, #f0e6c8);
 }
 
@@ -324,7 +324,6 @@ const formatDate = (dateStr) => {
 .chart-svg {
   width: 100%;
   height: auto;
-  max-height: 145px;
 }
 
 .grid-lines line {

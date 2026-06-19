@@ -71,6 +71,6 @@ const formatRoi = (value) => {
 .divider {
   height: 1px;
   background-color: var(--borderSubtle);
-  margin: 0.5rem 0;
+  margin: clamp(0.2rem, 1vh, 0.5rem) 0;
 }
 </style>

@@ -15,7 +15,7 @@
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
-  font: 21px/100% var(--sans);
+  font: 21px var(--sans);
   letter-spacing: 0.18px;
   color-scheme: light dark;
   color: var(--text);
@@ -334,7 +334,7 @@ code {
 
 .panel-title {
   color: var(--highlight, #c9a84c) !important;
-  font-size: 1.25rem !important;
+  font-size: 3vh !important;
   margin: 0 auto !important;
   text-transform: uppercase;
   letter-spacing: 1px;

@@ -1,4 +1,4 @@
-export const FLIPPER_INTERVAL_MS = secondsToMs(15) // 3 seconds
+export const FLIPPER_INTERVAL_MS = secondsToMs(1500) // 3 seconds
 export const RESUME_DELAY_MS = minutesToMs(1) // 1 minute delay before auto-resuming
 export const TIMER_DURATION_MS = minutesToMs(30) // 30 minutes in milliseconds
 

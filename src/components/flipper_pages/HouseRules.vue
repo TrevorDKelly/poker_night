@@ -64,7 +64,7 @@ const { quadPotValue } = useQuadPot()
   justify-content: flex-start;
   align-items: center;
   gap: 0.75rem;
-  font-size: 0.8rem;
+  font-size: clamp(0.7rem, 1.75vh, 4rem);
 }
 
 .info-label {
@@ -101,10 +101,10 @@ const { quadPotValue } = useQuadPot()
 }
 
 .rule-row {
-  padding: 0.2rem 0.75rem;
+  padding: clamp(0.3rem, 1vh, 2rem) 0.75rem;
   display: flex;
   gap: 0.5rem;
-  align-items: flex-start;
+  align-items: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   transition: background-color 0.2s ease;
   justify-content: flex-start;
@@ -119,7 +119,7 @@ const { quadPotValue } = useQuadPot()
 }
 
 .rule-number {
-  font-size: 0.75rem;
+  font-size: clamp(0.65rem, 1.3vw, 0.75rem);
   font-weight: bold;
   color: var(--highlight, #c9a84c);
   min-width: 24px;
@@ -140,13 +140,13 @@ const { quadPotValue } = useQuadPot()
 
 .rule-text {
   margin: 0;
-  font-size: 0.85rem;
+  font-size: clamp(0.75rem, 2vh, 4rem);
   color: var(--textPrimary, #f0e6c8);
   line-height: 1.4;
 }
 
 .rule-author {
-  font-size: 0.7rem;
+  font-size: clamp(0.6rem, 1.2vh, 3rem);
   color: var(--textMuted, #7a9e7e);
   font-style: italic;
   display: block;
@@ -156,7 +156,7 @@ const { quadPotValue } = useQuadPot()
 .no-rules {
   color: var(--textMuted, #7a9e7e);
   font-style: italic;
-  font-size: 0.9rem;
+  font-size: clamp(0.8rem, 1.6vw, 0.9rem);
   padding: 1.5rem;
   text-align: center;
 }
