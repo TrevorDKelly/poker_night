@@ -11,6 +11,10 @@
       🎲 Spin for Game
     </button>
 
+    <button @click.stop="toggleFullscreen" class="fullscreen-btn" title="Toggle Fullscreen">
+      ⛶
+    </button>
+
     <div class="status-indicator">
       <template v-if="!isPaused">
         Next page in <span class="countdown">{{ secondsRemaining }}s</span>
@@ -39,6 +43,16 @@ import Timer from './Timer.vue'
 import { MINI_GAMES } from '../config/miniGames.js'
 
 const showSpinner = ref(false)
+
+const toggleFullscreen = () => {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen().catch(err => {
+      console.error(`Error attempting to enable fullscreen: ${err.message}`);
+    });
+  } else {
+    document.exitFullscreen();
+  }
+}
 
 const spinnerUrl = computed(() => {
   const choices = MINI_GAMES.join(',')
@@ -98,9 +112,24 @@ footer {
 }
 
 .spinner-btn:hover {
-  background-color: var(--bgKey);
-  color: var(--highlight);
-  border-color: var(--highlight);
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--textPrimary);
+}
+
+.fullscreen-btn {
+  background-color: transparent;
+  border: 1px solid var(--borderSubtle);
+  color: var(--textMuted);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.fullscreen-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--textPrimary);
 }
 
 .controls-info {

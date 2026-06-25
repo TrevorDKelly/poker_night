@@ -13,6 +13,10 @@ feedback
   email to me?
   connect a db?
 
+quad pot stats
+  most added in a night
+  biggest win
+  average value
 
 additional
   1 of every hundred is a half second flash of something
