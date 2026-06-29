@@ -29,18 +29,27 @@
         <div class="card list-card">
           <div class="card-title">Top 3 K/D Ratio</div>
           <div class="card-value list-items">
-            <div v-if="stats.top3KD[0]" class="list-item rank-1">
-              {{ stats.top3KD[0].name }} ({{ stats.top3KD[0].k }}:{{ stats.top3KD[0].d }})
+            <div class="list-column rank-col">
+              <span class="rank-label rank-1">1st</span>
+              <span class="rank-label rank-2">2nd</span>
+              <span class="rank-label rank-3">3rd</span>
             </div>
-            <div v-else class="list-item-placeholder">1st place</div>
-            <div v-if="stats.top3KD[1]" class="list-item rank-2">
-              {{ stats.top3KD[1].name }} ({{ stats.top3KD[1].k }}:{{ stats.top3KD[1].d }})
+            <div class="list-column">
+              <span v-if="stats.top3KD[0]" class="rank-1">{{ stats.top3KD[0].name }}</span>
+              <span v-else class="list-item-placeholder">1st place</span>
+              <span v-if="stats.top3KD[1]" class="rank-2">{{ stats.top3KD[1].name }}</span>
+              <span v-else class="list-item-placeholder">2nd place</span>
+              <span v-if="stats.top3KD[2]" class="rank-3">{{ stats.top3KD[2].name }}</span>
+              <span v-else class="list-item-placeholder">3rd place</span>
             </div>
-            <div v-else class="list-item-placeholder">2nd place</div>
-            <div v-if="stats.top3KD[2]" class="list-item rank-3">
-              {{ stats.top3KD[2].name }} ({{ stats.top3KD[2].k }}:{{ stats.top3KD[2].d }})
+            <div class="list-column">
+              <span v-if="stats.top3KD[0]" class="rank-1">{{ stats.top3KD[0].k }}:{{ stats.top3KD[0].d }}</span>
+              <span v-else class="list-item-placeholder"></span>
+              <span v-if="stats.top3KD[1]" class="rank-2">{{ stats.top3KD[1].k }}:{{ stats.top3KD[1].d }}</span>
+              <span v-else class="list-item-placeholder"></span>
+              <span v-if="stats.top3KD[2]" class="rank-3">{{ stats.top3KD[2].k }}:{{ stats.top3KD[2].d }}</span>
+              <span v-else class="list-item-placeholder"></span>
             </div>
-            <div v-else class="list-item-placeholder">3rd place</div>
           </div>
         </div>
 
@@ -48,30 +57,107 @@
         <div class="card list-card">
           <div class="card-title">Biggest Rivals</div>
           <div class="card-value list-items">
-            <div v-if="stats.topRivalries[0]" class="list-item rank-1 rivalry">
-              <span class="rival-name">{{ stats.topRivalries[0].a }}</span>
-              <span class="rivalry-vs">vs</span>
-              <span class="rival-name">{{ stats.topRivalries[0].b }}</span>
-              <span class="rivalry-kos">({{ stats.topRivalries[0].total }} KOs)</span>
+            <div class="list-column rank-col">
+              <span class="rank-label rank-1">1st</span>
+              <span class="rank-label rank-2">2nd</span>
+              <span class="rank-label rank-3">3rd</span>
             </div>
-            <div v-else class="list-item-placeholder">—</div>
-            <div v-if="stats.topRivalries[1]" class="list-item rank-2 rivalry">
-              <span class="rival-name">{{ stats.topRivalries[1].a }}</span>
-              <span class="rivalry-vs">vs</span>
-              <span class="rival-name">{{ stats.topRivalries[1].b }}</span>
-              <span class="rivalry-kos">({{ stats.topRivalries[1].total }} KOs)</span>
+            <div class="list-column">
+              <span v-if="stats.topRivalries[0]" class="rank-1 rivalry">
+                <span class="rival-name">{{ stats.topRivalries[0].a }}</span> <span class="rivalry-vs">vs</span> <span class="rival-name">{{ stats.topRivalries[0].b }}</span>
+              </span>
+              <span v-else class="list-item-placeholder">—</span>
+              <span v-if="stats.topRivalries[1]" class="rank-2 rivalry">
+                <span class="rival-name">{{ stats.topRivalries[1].a }}</span> <span class="rivalry-vs">vs</span> <span class="rival-name">{{ stats.topRivalries[1].b }}</span>
+              </span>
+              <span v-else class="list-item-placeholder">2nd place</span>
+              <span v-if="stats.topRivalries[2]" class="rank-3 rivalry">
+                <span class="rival-name">{{ stats.topRivalries[2].a }}</span> <span class="rivalry-vs">vs</span> <span class="rival-name">{{ stats.topRivalries[2].b }}</span>
+              </span>
+              <span v-else class="list-item-placeholder">3rd place</span>
             </div>
-            <div v-else class="list-item-placeholder">2nd place</div>
-            <div v-if="stats.topRivalries[2]" class="list-item rank-3 rivalry">
-              <span class="rival-name">{{ stats.topRivalries[2].a }}</span>
-              <span class="rivalry-vs">vs</span>
-              <span class="rival-name">{{ stats.topRivalries[2].b }}</span>
-              <span class="rivalry-kos">({{ stats.topRivalries[2].total }} KOs)</span>
+            <div class="list-column">
+              <span v-if="stats.topRivalries[0]" class="rank-1 rivalry-kos">{{ stats.topRivalries[0].total }} KOs</span>
+              <span v-else class="list-item-placeholder"></span>
+              <span v-if="stats.topRivalries[1]" class="rank-2 rivalry-kos">{{ stats.topRivalries[1].total }} KOs</span>
+              <span v-else class="list-item-placeholder"></span>
+              <span v-if="stats.topRivalries[2]" class="rank-3 rivalry-kos">{{ stats.topRivalries[2].total }} KOs</span>
+              <span v-else class="list-item-placeholder"></span>
             </div>
-            <div v-else class="list-item-placeholder">3rd place</div>
           </div>
         </div>
 
+        <!-- 1 Night Winnings -->
+        <div class="card list-card">
+          <div class="card-title">Top 1 Night Winnings</div>
+          <div class="card-value list-items">
+            <div class="list-column rank-col">
+              <span class="rank-label rank-1">1st</span>
+              <span class="rank-label rank-2">2nd</span>
+              <span class="rank-label rank-3">3rd</span>
+            </div>
+            <div class="list-column">
+              <span v-if="stats.top1NightWinnings[0]" class="rank-1">${{ stats.top1NightWinnings[0].net.toFixed(2) }}</span>
+              <span v-else class="list-item-placeholder">—</span>
+              <span v-if="stats.top1NightWinnings[1]" class="rank-2">${{ stats.top1NightWinnings[1].net.toFixed(2) }}</span>
+              <span v-else class="list-item-placeholder">2nd place</span>
+              <span v-if="stats.top1NightWinnings[2]" class="rank-3">${{ stats.top1NightWinnings[2].net.toFixed(2) }}</span>
+              <span v-else class="list-item-placeholder">3rd place</span>
+            </div>
+            <div class="list-column">
+              <span v-if="stats.top1NightWinnings[0]" class="rank-1">{{ stats.top1NightWinnings[0].name }}</span>
+              <span v-else class="list-item-placeholder"></span>
+              <span v-if="stats.top1NightWinnings[1]" class="rank-2">{{ stats.top1NightWinnings[1].name }}</span>
+              <span v-else class="list-item-placeholder"></span>
+              <span v-if="stats.top1NightWinnings[2]" class="rank-3">{{ stats.top1NightWinnings[2].name }}</span>
+              <span v-else class="list-item-placeholder"></span>
+            </div>
+            <div class="list-column">
+              <span v-if="stats.top1NightWinnings[0]" class="rank-1 date-subtext">{{ stats.top1NightWinnings[0].date }}</span>
+              <span v-else class="list-item-placeholder"></span>
+              <span v-if="stats.top1NightWinnings[1]" class="rank-2 date-subtext">{{ stats.top1NightWinnings[1].date }}</span>
+              <span v-else class="list-item-placeholder"></span>
+              <span v-if="stats.top1NightWinnings[2]" class="rank-3 date-subtext">{{ stats.top1NightWinnings[2].date }}</span>
+              <span v-else class="list-item-placeholder"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Top Quad Pots -->
+        <div class="card list-card">
+          <div class="card-title">Top 3 Quad Pot Wins</div>
+          <div class="card-value list-items">
+            <div class="list-column rank-col">
+              <span class="rank-label rank-1">1st</span>
+              <span class="rank-label rank-2">2nd</span>
+              <span class="rank-label rank-3">3rd</span>
+            </div>
+            <div class="list-column">
+              <span v-if="stats.topQuadPots[0]" class="rank-1">${{ stats.topQuadPots[0].amount.toFixed(2) }}</span>
+              <span v-else class="list-item-placeholder">—</span>
+              <span v-if="stats.topQuadPots[1]" class="rank-2">${{ stats.topQuadPots[1].amount.toFixed(2) }}</span>
+              <span v-else class="list-item-placeholder">$0.00</span>
+              <span v-if="stats.topQuadPots[2]" class="rank-3">${{ stats.topQuadPots[2].amount.toFixed(2) }}</span>
+              <span v-else class="list-item-placeholder">$0.00</span>
+            </div>
+            <div class="list-column">
+              <span v-if="stats.topQuadPots[0]" class="rank-1">{{ stats.topQuadPots[0].name }}</span>
+              <span v-else class="list-item-placeholder"></span>
+              <span v-if="stats.topQuadPots[1]" class="rank-2">{{ stats.topQuadPots[1].name }}</span>
+              <span v-else class="list-item-placeholder"></span>
+              <span v-if="stats.topQuadPots[2]" class="rank-3">{{ stats.topQuadPots[2].name }}</span>
+              <span v-else class="list-item-placeholder"></span>
+            </div>
+            <div class="list-column">
+              <span v-if="stats.topQuadPots[0] && stats.topQuadPots[0].date" class="rank-1 date-subtext">{{ stats.topQuadPots[0].date }}</span>
+              <span v-else class="list-item-placeholder"></span>
+              <span v-if="stats.topQuadPots[1] && stats.topQuadPots[1].date" class="rank-2 date-subtext">{{ stats.topQuadPots[1].date }}</span>
+              <span v-else class="list-item-placeholder"></span>
+              <span v-if="stats.topQuadPots[2] && stats.topQuadPots[2].date" class="rank-3 date-subtext">{{ stats.topQuadPots[2].date }}</span>
+              <span v-else class="list-item-placeholder"></span>
+            </div>
+          </div>
+        </div>
 
         <div class="card stat-card">
           <span class="card-title">All Time {{ CURRENCY }} on Table</span>
@@ -79,7 +165,7 @@
         </div>
         <div class="card stat-card">
           <span class="card-title">Poker Nights</span>
-          <span class="card-value">{{ stats.pokerNights }}</span>
+          <span class="card-value">{{ stats.pokerNightsCount }}</span>
         </div>
         <div class="card stat-card">
           <span class="card-title">Total Players</span>
@@ -92,10 +178,6 @@
         <div class="card stat-card">
           <span class="card-title">Current Quad Pot</span>
           <span class="card-value">${{ quadPotValue }}</span>
-        </div>
-        <div class="card stat-card">
-          <span class="card-title">Top Quad Pot</span>
-          <span class="card-value">{{ stats.biggestQuadPotWin.name }} (${{ stats.biggestQuadPotWin.amount }})</span>
         </div>
       </div>
     </div>
@@ -167,22 +249,54 @@ const stats = computed(() => {
 
   const biggestWinner = players.reduce((best, p) => p.net > (best?.net ?? -Infinity) ? p : best, null)
   const totalPot = players.reduce((sum, p) => sum + p.buyIns, 0)
-  const pokerNights = new Set(TRANSACTIONS.filter(t => t.amount > 0).map(t => t.date)).size
+
+  const pokerNightDates = [...new Set(TRANSACTIONS.filter(t => t.amount > 0).map(t => t.date))]
+  const pokerNightsCount = pokerNightDates.length
   const totalPlayers = players.length
   const totalKOs = elimRules.length
-  const biggestQuadPotWinTx = TRANSACTIONS.filter(t => t.quad).sort((a, b) => b.amount - a.amount)[0];
+  const topQuadPots = TRANSACTIONS.filter(t => t.quad).sort((a, b) => b.amount - a.amount).slice(0, 3);
+
+  const formatDate = (dateStr) => {
+    if (!dateStr) return '';
+    const [y, m, d] = dateStr.split('-');
+    return `${m}/${d}/${y.slice(-2)}`;
+  };
+
+  const formattedQuadPots = topQuadPots.map(p => ({ ...p, date: formatDate(p.date) }));
+
+  const nightNets = []
+  for (const date of pokerNightDates) {
+    const nightTxs = TRANSACTIONS.filter(t => t.date === date)
+    const playerTotals = {}
+    for (const t of nightTxs) {
+      if (!playerTotals[t.name]) playerTotals[t.name] = { name: t.name, buyin: 0, payout: 0 }
+      if (t.type === 'buyin') playerTotals[t.name].buyin += t.amount
+      else playerTotals[t.name].payout += t.amount
+    }
+    for (const pt of Object.values(playerTotals)) {
+      const net = pt.payout - pt.buyin
+      if (net > 0) {
+        nightNets.push({ name: pt.name, date, net })
+      }
+    }
+  }
+  const top1NightWinnings = nightNets.sort((a, b) => b.net - a.net).slice(0, 3).map(n => ({
+    ...n,
+    date: formatDate(n.date)
+  }))
 
   return {
     top3KD,
     topRivalries,
+    top1NightWinnings,
+    topQuadPots: formattedQuadPots,
     mostKOs: mostKOEntry ? { name: mostKOEntry[0], count: mostKOEntry[1] } : { name: '—', count: 0 },
     mostBustedName: mostBustedEntry ? mostBustedEntry[0] : '—',
     mostBustedCount: mostBustedEntry ? mostBustedEntry[1] : 0,
     biggestWinner: biggestWinner?.name ?? '—',
     biggestWin: biggestWinner?.net > 0 ? biggestWinner.net.toFixed(2) : '0.00',
-    biggestQuadPotWin: biggestQuadPotWinTx ? { name: biggestQuadPotWinTx.name, amount: biggestQuadPotWinTx.amount.toFixed(2) } : { name: '—', amount: '0.00' },
     totalPot: totalPot.toFixed(2),
-    pokerNights,
+    pokerNightsCount,
     totalPlayers,
     totalKOs,
   }
@@ -269,33 +383,49 @@ const stats = computed(() => {
 
 .list-items {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.list-column {
+  display: flex;
   flex-direction: column;
-  gap: 0.1rem;
+  justify-content: space-between;
+  text-align: left;
+  gap: 0.2rem;
 }
 
-.list-item {
-  color: var(--textPrimary, #f0e6c8);
-  text-align: center;
+.rank-col {
+  flex: 0 0 2rem;
 }
 
-.list-item.rank-1 {
+
+.rank-label {
+  opacity: 0.7;
+  font-size: 0.8em;
+}
+
+.rank-1 {
   color: var(--highlight, #c9a84c);
 }
 
-.list-item.rank-2 {
-  font-size: 0.8em;
+.rank-2 {
+  font-size: 0.85em;
   opacity: 0.8;
+  color: var(--textPrimary, #f0e6c8);
 }
 
-.list-item.rank-3 {
-  font-size: 0.75em;
+.rank-3 {
+  font-size: 0.8em;
   opacity: 0.6;
+  color: var(--textPrimary, #f0e6c8);
 }
 
-.list-item.rivalry {
+.rivalry {
   text-transform: none;
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 0.3rem;
 }
@@ -309,10 +439,15 @@ const stats = computed(() => {
   font-size: 0.8em;
 }
 
+.date-subtext {
+  font-size: 0.75em;
+  opacity: 0.7;
+}
+
 .list-item-placeholder {
-  font-size: clamp(0.7rem, 1.4vw, 0.8rem);
+  font-size: clamp(0.7rem, 1.0vw, 0.8rem);
   color: var(--textMuted, #7a9e7e);
   opacity: 0.6;
-  text-align: center;
+  text-align: left;
 }
 </style>

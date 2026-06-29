@@ -44,7 +44,7 @@
             :d="player.path"
             fill="none"
             :stroke="player.color"
-            stroke-width="2.5"
+            stroke-width="1.5"
             stroke-linecap="round"
             stroke-linejoin="round"
           />
@@ -54,10 +54,10 @@
             :key="pt.x + '-' + pt.y"
             :cx="pt.x"
             :cy="pt.y"
-            r="3.5"
+            r="2.5"
             :fill="player.color"
             stroke="#122014"
-            stroke-width="1.5"
+            stroke-width="1.0"
           />
         </g>
 
@@ -96,22 +96,31 @@ const props = defineProps({
   },
 })
 
-// Get distinctive themed colors for each player
-const PLAYER_COLORS = {
-  Trevor: '#c9a84c',  // Gold
-  Eric: '#df4b4b',    // Heart Red
-  Mark: '#4ba0df',    // Diamond Blue
-  Darnell: '#5dca6e', // Club Green
-  Cole: '#da70d6',    // Purple/Orchid
-  Sarah: '#e9967a',   // Salmon
-  Mike: '#f4a460',    // Sandy Brown
-}
-
-const getPlayerColor = (name, index) => {
-  if (PLAYER_COLORS[name]) return PLAYER_COLORS[name]
-  const list = ['#c9a84c', '#df4b4b', '#4ba0df', '#5dca6e', '#da70d6', '#e9967a', '#f4a460', '#95a5a6']
-  return list[index % list.length]
-}
+// Assign colors by rank, not by player name.
+const RANK_COLORS = [
+  '#c9a84c', // 1st (Gold)
+  '#c0c0c0', // 2nd (Silver)
+  '#cd7f32', // 3rd (Bronze)
+  '#df4b4b', // 4th (Heart Red)
+  '#4ba0df', // 5th (Diamond Blue)
+  '#5dca6e', // 6th (Club Green)
+  '#da70d6', // 7th (Purple/Orchid)
+  '#e9967a', // 8th (Salmon)
+  '#f4a460', // 9th (Sandy Brown)
+  '#95a5a6', // 10th (Grey)
+  '#20b2aa', // Light Sea Green
+  '#ff69b4', // Hot Pink
+  '#8a2be2', // Blue Violet
+  '#00ced1', // Dark Turquoise
+  '#ff8c00', // Dark Orange
+  '#adff2f', // Green Yellow
+  '#ff1493', // Deep Pink
+  '#4682b4', // Steel Blue
+  '#dc143c', // Crimson
+  '#00fa9a', // Medium Spring Green
+  '#ff00ff', // Magenta
+  '#1e90ff', // Dodger Blue
+]
 
 const uniqueDates = computed(() => {
   const datesSet = new Set()
@@ -234,7 +243,7 @@ const playerLineData = computed(() => {
   const toY = (net) => 10 + ((max - getScaledNet(net)) / range) * 105
 
   return sortedPlayerNames.value.map((name, pIdx) => {
-    const color = getPlayerColor(name, pIdx)
+    const color = RANK_COLORS[pIdx % RANK_COLORS.length]
     const dots = []
     const pointsForPath = []
     let firstAppearanceIndex = -1
