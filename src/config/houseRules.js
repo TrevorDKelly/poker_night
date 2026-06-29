@@ -38,7 +38,7 @@ export const HOUSE_RULES = [
     author: "Fiona",
     eliminatedPlayer: "Issac",
     date: "June 27, 2026",
-    rule: 'TBD',
+    rule: "You can buy a look at your opponent’s cards after folding for 200 chips per card. (opponent chooses which card to show if 1)",
   },
   // {
   //   author: "Trevor",
