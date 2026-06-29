@@ -34,12 +34,12 @@ export const HOUSE_RULES = [
     date: "May 22, 2026",
     rule: 'You must let the player to your right cut the deck before dealing.',
   },
-  // {
-  //   author: "Mark",
-  //   eliminatedPlayer: "Eric",
-  //   date: "May 22, 2026",
-  //   rule: 'Other',
-  // },
+  {
+    author: "Fiona",
+    eliminatedPlayer: "Issac",
+    date: "June 27, 2026",
+    rule: 'TBD',
+  },
   // {
   //   author: "Trevor",
   //   eliminatedPlayer: "Mark",

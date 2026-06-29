@@ -20,6 +20,15 @@ export const TRANSACTIONS = [
   { name: 'Cole',    type: 'payout', amount: 32.20, date: '2026-05-22' },
   { name: 'Mark',    type: 'payout', amount: 16.60, date: '2026-05-22' },
 
+  { name: 'Trevor',  type: 'buyin',  amount: 20.00, date: '2026-06-27' },
+  { name: 'Issac',   type: 'buyin',  amount: 20.00, date: '2026-06-27' },
+  { name: 'Cole',    type: 'buyin',  amount: 20.00, date: '2026-06-27' },
+  { name: 'Fiona',   type: 'buyin',  amount: 20.00, date: '2026-06-27' },
+  { name: 'Trevor',  type: 'payout', amount: 40.70, date: '2026-06-27' },
+  { name: 'Cole',    type: 'payout', amount: 20.10, date: '2026-06-27' },
+  { name: 'Fiona',   type: 'payout', amount: 13.70, date: '2026-06-27' },
+  { name: 'Issac',   type: 'payout', amount: 0.00,  date: '2026-06-27' },
+
   // 2026-05-22 transactions
   // { name: 'Trevor',  type: 'buyin',  amount: 20.00, date: '2026-05-23' },
   // { name: 'Eric',    type: 'buyin',  amount: 20.00, date: '2026-05-23' },
