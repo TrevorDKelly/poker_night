@@ -1,8 +1,7 @@
 <script setup>
 import { theme } from './config/theme.js'
 import { onMounted, ref, watch } from 'vue'
-import ChipValues from './components/flipper_pages/ChipValues.vue'
-import HandValues from './components/flipper_pages/HandValues.vue'
+import ChipAndHandValues from './components/flipper_pages/ChipAndHandValues.vue'
 import HouseRules from './components/flipper_pages/HouseRules.vue'
 import Leaderboard from './components/flipper_pages/Leaderboard.vue'
 import Stats from './components/flipper_pages/Stats.vue'
@@ -11,8 +10,7 @@ import { useFlipper } from './logic/useFlipper.js'
 
 // We have 5 half-page components now
 const pages = [
-  ChipValues,
-  HandValues,
+  ChipAndHandValues,
   HouseRules,
   Leaderboard,
   Stats,

@@ -1,25 +1,39 @@
 <template>
-  <div class="flipper-panel">
-    <div class="panel-header">
-      <h2 class="panel-title">🏆 Poker Hand Rankings</h2>
+  <div class="flipper-panel combined-panel">
+    <div class="chips-section">
+      <div class="panel-header">
+        <h2 class="panel-title">🪙 Chips</h2>
+      </div>
+      <div class="chips-container">
+        <div v-for="chip in chips" :key="chip.color" class="chip-row panel-row">
+          <img :src="chip.image" :alt="chip.color" class="chip-img" />
+          <span class="chip-val">{{ chip.value }}</span>
+        </div>
+      </div>
     </div>
 
-    <div class="hands-container panel-scrollable">
-      <div v-for="hand in hands" :key="hand.name" class="hand-row panel-row">
-        <!-- Rank -->
-        <span class="rank panel-row-number">{{ hand.rank }}</span>
-        <span class="hand-name">{{ hand.name }}</span>
+    <div class="hands-section">
+      <div class="panel-header">
+        <h2 class="panel-title">🏆 Poker Hand Rankings</h2>
+      </div>
 
-        <!-- Cards on the right -->
-        <div class="hand-cards">
-          <span
-            v-for="(card, i) in hand.cards"
-            :key="i"
-            :class="['card', { red: ['❤️', '♦️'].includes(card.suit), filler: card.filler }]"
-          >
-            <span class="card-val">{{ card.value }}</span>
-            <span class="suit">{{ card.suit }}</span>
-          </span>
+      <div class="hands-container panel-scrollable">
+        <div v-for="hand in hands" :key="hand.name" class="hand-row panel-row">
+          <!-- Rank -->
+          <span class="rank panel-row-number">{{ hand.rank }}</span>
+          <span class="hand-name">{{ hand.name }}</span>
+
+          <!-- Cards on the right -->
+          <div class="hand-cards">
+            <span
+              v-for="(card, i) in hand.cards"
+              :key="i"
+              :class="['card', { red: ['❤️', '♦️'].includes(card.suit), filler: card.filler }]"
+            >
+              <span class="card-val">{{ card.value }}</span>
+              <span class="suit">{{ card.suit }}</span>
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -27,6 +41,20 @@
 </template>
 
 <script setup>
+import whiteChip from '../../assets/white_chip.png'
+import redChip from '../../assets/red_chip.png'
+import blueChip from '../../assets/blue_chip.png'
+import greenChip from '../../assets/green_chip.png'
+import blackChip from '../../assets/black_chip.png'
+
+const chips = [
+  { color: 'white', value: 10, image: whiteChip },
+  { color: 'red', value: 50, image: redChip },
+  { color: 'blue', value: 100, image: blueChip },
+  { color: 'green', value: 250, image: greenChip },
+  { color: 'black', value: 1000, image: blackChip }
+]
+
 const hands = [
   {
     rank: 1,
@@ -142,6 +170,63 @@ const hands = [
 </script>
 
 <style scoped>
+.combined-panel {
+  flex-direction: row !important;
+  gap: 1rem;
+}
+
+.chips-section {
+  flex: 0 0 25%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.hands-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.chips-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  min-height: 0;
+  gap: clamp(4px, 1vh, 12px);
+  padding: 0.25rem 0;
+  box-sizing: border-box;
+}
+
+.chip-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex: 1;
+  min-height: 0;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: clamp(0.2rem, 1vh, 0.5rem) clamp(0.5rem, 1vw, 1rem);
+  box-sizing: border-box;
+}
+
+.chip-img {
+  height: clamp(30px, 5vh, 60px);
+  width: clamp(30px, 5vh, 60px);
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+.chip-val {
+  font-family: monospace;
+  font-weight: bold;
+  color: var(--highlight, #c9a84c);
+  font-size: clamp(1.1rem, 2.2vh, 1.8rem);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
 .hand-values-column {
   background: var(--bgCard, rgba(26, 46, 28, 0.4));
   border: 1px solid var(--borderSubtle, rgba(201, 168, 76, 0.2));
@@ -167,7 +252,6 @@ const hands = [
 .hand-row {
   justify-content: space-between;
   padding: 0.25rem 0.5rem;
-  background: rgba(0, 0, 0, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.02);
   flex: 1;
   min-height: 0;
@@ -197,7 +281,7 @@ const hands = [
 .hand-name {
   flex: 1;
   text-align: left;
-  font-size: clamp(0.75rem, 2.5vh, 5rem);
+  font-size: clamp(0.7rem, 2.2vh, 4rem);
   font-weight: bold;
   color: var(--highlight, #c9a84c);
   white-space: nowrap;

@@ -30,7 +30,7 @@ const playerStats = computed(() => {
   const totals = {}
   for (const t of TRANSACTIONS) {
     if (!totals[t.name]) totals[t.name] = { name: t.name, buyIns: 0, payouts: 0 }
-    if (t.type === 'buyin') totals[t.name].buyIns += t.amount
+    if (t.type === 'buyin') totals[t.name].buyIns += t.amount - 2
     else totals[t.name].payouts += t.amount
   }
   return Object.values(totals).map(p => {
