@@ -5,6 +5,5 @@ export const MINI_GAMES = [
     'War',
     'Acey Ducey',
     'Poker Dice',
-    'The Debt of Lies',
-    'Harvest of Souls'
+    'The Debt of Lies'
 ]

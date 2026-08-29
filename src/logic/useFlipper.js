@@ -2,6 +2,8 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { FLIPPER_INTERVAL_MS, RESUME_DELAY_MS } from '../config/constants.js'
 
 export function useFlipper(pages) {
+  const getPages = () => (pages.value || pages)
+
   const currentIndex = ref(0)
   const isPaused = ref(false)
   const msRemaining = ref(FLIPPER_INTERVAL_MS)
@@ -46,12 +48,12 @@ export function useFlipper(pages) {
 
   // --- Navigation ---
   const nextPage = () => {
-    currentIndex.value = (currentIndex.value + 1) % pages.length
+    currentIndex.value = (currentIndex.value + 1) % getPages().length
     msRemaining.value = FLIPPER_INTERVAL_MS
   }
 
   const prevPage = () => {
-    currentIndex.value = (currentIndex.value - 1 + pages.length) % pages.length
+    currentIndex.value = (currentIndex.value - 1 + getPages().length) % getPages().length
     msRemaining.value = FLIPPER_INTERVAL_MS
   }
 

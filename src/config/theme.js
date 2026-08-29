@@ -3,24 +3,24 @@
 
 export const theme = {
   // Backgrounds
-  bgPage:       '#0d1f0f',   // deep felt green
-  bgFooter:     'rgba(0, 0, 0, 0.7)',
-  bgCard:       '#1a2e1c',   // slightly lighter green for cards/panels
+  bgPage:       '#163a18',   // deep felt green
+  bgFooter:     'rgba(0, 0, 0, 0.6)',
+  bgCard:       '#254528',   // slightly lighter green for cards/panels
 
   // Accent colors
-  highlight:    '#c9a84c',   // headings, key labels, active highlights
-  warning:      '#b22222',   // paused state, errors, suit icons
-  active:       '#2e7d32',   // positive states, countdown, resume button
+  highlight:    '#e6c35c',   // headings, key labels, active highlights
+  warning:      '#d62828',   // paused state, errors, suit icons
+  active:       '#4caf50',   // positive states, countdown, resume button
 
   // Text
-  textPrimary:  '#f0e6c8',   // warm off-white
-  textMuted:    '#7a9e7e',   // muted green-grey
+  textPrimary:  '#fdfcf7',   // warm off-white
+  textMuted:    '#9abf9f',   // muted green-grey
 
   // Borders & dividers
-  borderSubtle: 'rgba(201, 168, 76, 0.2)',  // faint gold border
+  borderSubtle: 'rgba(230, 195, 92, 0.3)',  // faint gold border
 
   // Footer pill/badge backgrounds
-  bgKey:        '#1e3a20',
+  bgKey:        '#2a522d',
 
   // Font
   fontFamily:   '"Georgia", "Times New Roman", serif',

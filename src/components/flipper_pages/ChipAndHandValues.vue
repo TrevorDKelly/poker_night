@@ -2,7 +2,7 @@
   <div class="flipper-panel combined-panel">
     <div class="chips-section">
       <div class="panel-header">
-        <h2 class="panel-title">🪙 Chips</h2>
+        <h2 class="panel-title">Values</h2>
       </div>
       <div class="chips-container">
         <div v-for="chip in chips" :key="chip.color" class="chip-row panel-row">
@@ -212,9 +212,22 @@ const hands = [
   box-sizing: border-box;
 }
 
+@media (min-width: 1024px) {
+  .combined-panel.flipper-panel {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+  }
+}
+
 .chip-img {
-  height: clamp(30px, 5vh, 60px);
-  width: clamp(30px, 5vh, 60px);
+  height: clamp(30px, 8vh, 100px);
+  width: clamp(30px, 8vh, 100px);
   object-fit: contain;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
 }
@@ -334,6 +347,39 @@ const hands = [
 @media (max-width: 768px) {
   .hand-row {
     padding: 0.2rem 0.4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .chips-section {
+    position: relative;
+    width: 25%;
+    height: 100%;
+    padding: 1rem 0rem;
+    left: 0;
+    top: 0;
+    transform: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hands-section {
+    position: relative;
+    margin-left: 0;
+    width: 75%;
+    height: 100%;
+    align-self: stretch;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 1rem 0rem;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hands-section .hands-container {
+    padding-bottom: 2rem;
   }
 }
 </style>
